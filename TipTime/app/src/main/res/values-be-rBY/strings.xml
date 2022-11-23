@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Час чаявых</string>
+    <string name="cost_of_service">Кошт замовы</string>
+    <string name="how_was_the_service">Цi спадабаўся Вам сэрвис?</string>
+    <string name="amazing_20">Цудоўна (20%)</string>
+    <string name="good_18">Добра (18%)</string>
+    <string name="okay_15">Окей (15%)</string>
+    <string name="round_up_tip">Акруглiць чаявыя?</string>
+    <string name="calculate">Падлiчыць</string>
+    <string name="tip_amount">Чаявыя %s</string>
+</resources>
