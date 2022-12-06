@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizFragment">
+    tools:context=".ui.QuizFragment">
 
     <TextView
         android:id="@+id/questionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="50dp"
+        android:fontFamily="sans-serif-medium"
         android:justificationMode="inter_word"
         android:lineSpacingExtra="2dp"
+        android:text="Is your English tenses knowledge good? Here is an amazing tenses quiz for you that will help you test your knowledge about the past, present, and future tense. There are three basic tenses in English Grammar."
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Is your English tenses knowledge good? Here is an amazing tenses quiz for you that will help you test your knowledge about the past, present, and future tense. There are three basic tenses in English Grammar." />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currentTextView"
@@ -69,24 +70,33 @@
             android:id="@+id/firstRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
+            android:text="1"
+             />
 
         <RadioButton
             android:id="@+id/secondRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
             android:text="2" />
 
         <RadioButton
             android:id="@+id/thirdRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
             android:text="3" />
 
         <RadioButton
             android:id="@+id/fourthRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
             android:text="4" />
 
     </RadioGroup>

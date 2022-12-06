@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.quizapp.QuizFragment"
+        android:name="com.example.quizapp.ui.QuizFragment"
         android:label="fragment_quiz"
         tools:layout="@layout/fragment_quiz" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultScreen"
-        android:name="com.example.quizapp.ResultScreen"
+        android:name="com.example.quizapp.ui.ResultScreen"
         android:label="fragment_result_screen"
         tools:layout="@layout/fragment_result_screen" />
 </navigation>
