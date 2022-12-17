@@ -2,4 +2,7 @@
     <string name="app_name">QuizApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz_choose_the_correct_tense_for_this_sentence">Quiz: choose the correct tense for this sentence:</string>
+    <string name="next">next</string>
+    <string name="previous">previous</string>
 </resources>

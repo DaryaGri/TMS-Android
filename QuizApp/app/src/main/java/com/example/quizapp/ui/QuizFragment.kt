@@ -1,31 +1,32 @@
 package com.example.quizapp.ui
 
+
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.quizapp.R
 import com.example.quizapp.databinding.FragmentQuizBinding
 import com.example.quizapp.viewmodels.QuizViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuizFragment : Fragment() {
 
     private var _binding: FragmentQuizBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var viewModel: QuizViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: QuizViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = (activity as MainActivity).viewModel
         _binding = FragmentQuizBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,9 +43,8 @@ class QuizFragment : Fragment() {
             viewModel.loadPreviousQuestion()
         }
         binding.allTextView.text = viewModel.getQuestionsAmount().toString()
-        viewModel.loadCurrentQuestion()
 
-        binding.radios.setOnCheckedChangeListener { radioGroup, i ->
+        binding.radios.setOnCheckedChangeListener { _, i ->
             when (i) {
                 R.id.firstRB -> {
                     viewModel.userAnswer = 1
@@ -62,12 +62,15 @@ class QuizFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setUpObservers() {
         viewModel.currentQuestionsId.observe(viewLifecycleOwner) { questionNumber ->
+            viewModel.loadCurrentQuestion()
             binding.prevButton.isEnabled = questionNumber != 0
             if (questionNumber == viewModel.getQuestionsAmount() - 1) {
                 binding.nextButton.text = "Finish"
                 binding.nextButton.setOnClickListener {
+                    viewModel.saveUserAnswer()
                     findNavController().navigate(R.id.action_quizFragment_to_resultScreen)
                 }
             } else {
@@ -126,5 +129,4 @@ class QuizFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

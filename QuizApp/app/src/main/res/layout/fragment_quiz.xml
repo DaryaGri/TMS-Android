@@ -7,16 +7,32 @@
     tools:context=".ui.QuizFragment">
 
     <TextView
+        android:id="@+id/startTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:justificationMode="inter_word"
+        android:background="@color/green_light"
+        android:text="@string/quiz_choose_the_correct_tense_for_this_sentence"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/questionTextView"
+        app:layout_constraintStart_toStartOf="@id/questionTextView"
+        app:layout_constraintBottom_toTopOf="@id/questionTextView" />
+
+    <TextView
         android:id="@+id/questionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="180dp"
         android:layout_marginEnd="50dp"
         android:fontFamily="sans-serif-medium"
         android:justificationMode="inter_word"
         android:lineSpacingExtra="2dp"
-        android:text="Is your English tenses knowledge good? Here is an amazing tenses quiz for you that will help you test your knowledge about the past, present, and future tense. There are three basic tenses in English Grammar."
+        android:text="Is your English tenses knowledge good? Here is an amazing tenses quiz for you that will help you test your knowledge."
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@id/slashTextView"
         app:layout_constraintTop_toTopOf="@id/allTextView"
         android:text="2" />
@@ -38,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@id/allTextView"
         app:layout_constraintTop_toTopOf="@id/allTextView"
         android:text="/" />
@@ -48,9 +64,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="10" />
@@ -60,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="1"
              />
 
@@ -80,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="2" />
 
         <RadioButton
@@ -88,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="3" />
 
         <RadioButton
@@ -96,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:text="4" />
 
     </RadioGroup>
@@ -107,8 +123,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#136C18"
         android:layout_margin="10dp"
-        android:text="previous"
-        android:textSize="15dp"
+        android:text="@string/previous"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintEnd_toStartOf="@+id/guideLine"
@@ -120,8 +136,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#136C18"
         android:layout_margin="10dp"
-        android:text="next"
-        android:textSize="15dp"
+        android:text="@string/next"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.1"
         app:layout_constraintEnd_toEndOf="parent"

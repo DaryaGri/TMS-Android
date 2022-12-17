@@ -1,19 +1,23 @@
 package com.example.quizapp.model
 
-class Repo {
+import javax.inject.Inject
+
+class Repo @Inject constructor() {
     val data = arrayListOf(
         "John's mom ____ him home from school most days.",
-        "One day last year John ____ for his mom at the front door.",
-        "Just before he got there, a tree branch ____ down on the car.",
-        "The branch ____ John's mom inside the car.",
-        "The firefighters ____ her.")
+        "Anna and I ____ best friends since we were five.",
+        "Last weekend, I ____ on a trip to York with my friends.",
+        "What ____ at the moment?",
+        "He definitely ____ on the team next week.")
+
     val answersVariants = arrayListOf(
-        arrayListOf("Drived", "Driving", "Drive", "Drives"),//4
-        arrayListOf("Will wait", "Wait", "Waited", "Did wait"),//3
-        arrayListOf("Will crash", "Crash", "Crashed", "Crashing"),//3
-        arrayListOf("Trap", "Trapped", "Will trap", "Shall trap"),//2
-        arrayListOf("Rescued", "Will rescued", "Rescue", "Rescuing"),//1
+        arrayListOf("drived", "driving", "drive", "drives"),//4
+        arrayListOf("was", "been", "have been", "be"),//3
+        arrayListOf("goes", "had gone", "went", "gone"),//3
+        arrayListOf("do you do", "are you doing", "did you do", "is you do"),//2
+        arrayListOf("will be", "was", "to be", "have been"),//1
     )
-    val answersId = arrayListOf(3, 2, 2, 1, 0)
+
+    val answersId = arrayListOf(4, 3, 3, 2, 1)
 
 }
