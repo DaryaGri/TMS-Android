@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsListFragment"
-        android:name="com.example.newsapp.NewsListFragment"
+        android:name="com.example.newsapp.ui.NewsListFragment"
         android:label="fragment_news_list"
         tools:layout="@layout/fragment_news_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouriteNewsFragment"
-        android:name="com.example.newsapp.FavouriteNewsFragment"
+        android:name="com.example.newsapp.ui.FavouriteNewsFragment"
         android:label="fragment_favourite_news"
         tools:layout="@layout/fragment_favourite_news" />
 </navigation>
