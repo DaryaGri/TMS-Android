@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyProgressBarView">
+        <attr name="mainProgressBarColor" format="color" />
+        <attr name="customProgressBarColor" format="color" />
+        <attr name="borderProgressBarColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="myValue" format="integer" />
+
+    </declare-styleable>
+</resources>
