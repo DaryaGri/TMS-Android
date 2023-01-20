@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F7DDB6"
     tools:context=".ui.NewsListFragment">
     
     <androidx.recyclerview.widget.RecyclerView
@@ -18,7 +17,15 @@
         android:padding="20dp"
         tools:listitem="@layout/news_list_item"
         />
-
-
+    <ProgressBar
+        android:id="@+id/MainNewsProgressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

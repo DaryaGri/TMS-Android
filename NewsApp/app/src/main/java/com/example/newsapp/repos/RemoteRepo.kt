@@ -1,9 +1,25 @@
 package com.example.newsapp.repos
 
+import androidx.lifecycle.LiveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
+import com.example.newsapp.data.Articles
 import com.example.newsapp.network.ApiInterface
-import javax.inject.Inject
+import com.example.newsapp.utils.Constants.PAGE_SIZE_KEY
 
 class RemoteRepo(private val newsApi: ApiInterface) {
 
-    suspend fun getAllNews(country: String = "gb") = newsApi.getAllNews(country)
+    fun getAllNews(country: String): LiveData<PagingData<Articles>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE_KEY,
+                enablePlaceholders = false,
+                initialLoadSize = 2),
+            pagingSourceFactory = {NewsPagingSource(newsApi, country)},
+            initialKey = 1
+        ).liveData
+
+    }
 }
