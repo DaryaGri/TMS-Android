@@ -1,11 +1,13 @@
 package com.example.newsapp.ui.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.newsapp.R
 import com.example.newsapp.data.Articles
 import com.example.newsapp.databinding.NewsListItemBinding
 
@@ -17,12 +19,28 @@ class NewsPagerAdapter() :
         fun bind(item: Articles) {
             if (item != null) {
                 with(binding) {
-                    Glide.with(this@ViewHolder.itemView.context).load(item.urlToImage
-                        ?: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRucpvmQPFPFFQ2PomrKQh9zw7AV_OROfs6pg&usqp=CAU")
+                    Glide.with(this@ViewHolder.itemView.context)
+                        .load(item.urlToImage)
+                        .placeholder(R.drawable.no_image)
                         .into(newsImageImageView)
+
                     titleTextView.text = item.title
                     authorTextView.text = item.author
                     mainNewsDescriptionTextView.text = item.description
+
+                    authorTextView.visibility = View.VISIBLE
+                    newsImageImageView.visibility = View.VISIBLE
+                    mainNewsDescriptionTextView.visibility = View.VISIBLE
+
+                    if (item.author.isNullOrEmpty()){
+                        authorTextView.visibility = View.GONE
+                    }
+                    if (item.urlToImage.isNullOrEmpty()){
+                        newsImageImageView.visibility = View.GONE
+                    }
+                    if (item.description.isNullOrEmpty()){
+                        mainNewsDescriptionTextView.visibility = View.GONE
+                    }
                 }
             }
         }

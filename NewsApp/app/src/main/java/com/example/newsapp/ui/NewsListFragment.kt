@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.R
@@ -17,6 +18,8 @@ import com.example.newsapp.databinding.FragmentNewsListBinding
 import com.example.newsapp.ui.adapters.NewsPagerAdapter
 import com.example.newsapp.viewModels.MainNewsListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -27,6 +30,7 @@ class NewsListFragment : Fragment() {
 
     private val viewModel: MainNewsListViewModel by viewModels()
     private val adapter = NewsPagerAdapter()
+    private lateinit var job: Job
 
 
     override fun onCreateView(
@@ -47,7 +51,7 @@ class NewsListFragment : Fragment() {
     }
 
     private fun setUpObservers() {
-        lifecycleScope.launch {
+        job = lifecycleScope.launch {
             viewModel.getNewsList().observe(viewLifecycleOwner) {
                 it.let {
                     adapter.submitData(lifecycle, it)
@@ -90,6 +94,7 @@ class NewsListFragment : Fragment() {
                     }
                     R.id.favourite -> {
                         Log.d("TAG", "Favourite selected ")
+                        findNavController().navigate(R.id.action_newsListFragment_to_favouriteNewsFragment)
                         true
                     }
                     else -> false
@@ -101,5 +106,6 @@ class NewsListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        job.cancel()
     }
 }

@@ -8,8 +8,9 @@ import androidx.paging.liveData
 import com.example.newsapp.data.Articles
 import com.example.newsapp.network.ApiInterface
 import com.example.newsapp.utils.Constants.PAGE_SIZE_KEY
+import javax.inject.Inject
 
-class RemoteRepo(private val newsApi: ApiInterface) {
+class RemoteRepo @Inject constructor(private val newsApi: ApiInterface) {
 
     fun getAllNews(country: String): LiveData<PagingData<Articles>> {
         return Pager(
