@@ -47,7 +47,6 @@ class NewsListFragment : Fragment() {
         setUpMenu()
         setUpRecycler()
         setUpObservers()
-
     }
 
     private fun setUpObservers() {
