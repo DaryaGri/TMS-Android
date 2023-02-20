@@ -1,11 +1,9 @@
 package com.example.newsapp.ui.adapters
 
-import android.content.DialogInterface.OnClickListener
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,8 +11,8 @@ import com.example.newsapp.R
 import com.example.newsapp.data.Articles
 import com.example.newsapp.databinding.NewsListItemBinding
 
-class NewsPagerAdapter(val onClickListener: (item: Articles) -> Unit) :
-    PagingDataAdapter<Articles, NewsPagerAdapter.ViewHolder>(NewsComparator) {
+class FavNewsAdapter(val onClickListener: (item: Articles) -> Unit) :
+    RecyclerView.Adapter<FavNewsAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: NewsListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -53,13 +51,17 @@ class NewsPagerAdapter(val onClickListener: (item: Articles) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position)?.let { holder.bind(it) }
+        holder.bind(differ.currentList[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             NewsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
     }
 
     object NewsComparator : DiffUtil.ItemCallback<Articles>() {
@@ -72,4 +74,5 @@ class NewsPagerAdapter(val onClickListener: (item: Articles) -> Unit) :
         }
     }
 
+    val differ = AsyncListDiffer(this, NewsComparator)
 }

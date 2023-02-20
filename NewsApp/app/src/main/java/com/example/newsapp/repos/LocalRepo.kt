@@ -2,11 +2,12 @@ package com.example.newsapp.repos
 
 import com.example.newsapp.data.DbArticles
 import com.example.newsapp.db.ArticlesDao
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalRepo @Inject constructor(var dbDao: ArticlesDao) {
 
-    suspend fun getAll(): List<DbArticles> {
+    fun getAll(): Flow<List<DbArticles>> {
         return dbDao.getAll()
     }
 
@@ -16,6 +17,10 @@ class LocalRepo @Inject constructor(var dbDao: ArticlesDao) {
 
     suspend fun delete(article: DbArticles) {
         dbDao.delete(article)
+    }
+
+    suspend fun getByTitle(article: DbArticles): DbArticles {
+        return dbDao.getByTitle(article.title!!)
     }
 
 }

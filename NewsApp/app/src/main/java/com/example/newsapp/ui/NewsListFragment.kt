@@ -19,7 +19,6 @@ import com.example.newsapp.ui.adapters.NewsPagerAdapter
 import com.example.newsapp.viewModels.MainNewsListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -29,7 +28,7 @@ class NewsListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: MainNewsListViewModel by viewModels()
-    private val adapter = NewsPagerAdapter()
+    private lateinit var adapter: NewsPagerAdapter
     private lateinit var job: Job
 
 
@@ -44,9 +43,11 @@ class NewsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.loadSettings()
         setUpMenu()
         setUpRecycler()
         setUpObservers()
+
     }
 
     private fun setUpObservers() {
@@ -71,6 +72,11 @@ class NewsListFragment : Fragment() {
     }
 
     private fun setUpRecycler() {
+
+        adapter = NewsPagerAdapter { article ->
+            viewModel.insertArticle(article)
+        }
+
         binding.newsRecycleView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.newsRecycleView.adapter = adapter
@@ -86,9 +92,20 @@ class NewsListFragment : Fragment() {
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
-                    R.id.settings -> {
-                        Log.d("TAG", "Settings selected")
-                        viewModel.cityPref.value = "us"
+                    R.id.us -> {
+                        viewModel.setPrefs("us")
+                        true
+                    }
+                    R.id.gb -> {
+                        viewModel.setPrefs("gb")
+                        true
+                    }
+                    R.id.lt -> {
+                        viewModel.setPrefs("lt")
+                        true
+                    }
+                    R.id.ua -> {
+                        viewModel.setPrefs("ua")
                         true
                     }
                     R.id.favourite -> {
@@ -101,6 +118,7 @@ class NewsListFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

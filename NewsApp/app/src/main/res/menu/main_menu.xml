@@ -6,11 +6,28 @@
         android:icon="@drawable/settings"
         app:showAsAction="always"
         android:title="ACTION">
+
         <menu>
             <item
-                android:id="@+id/settings"
-                android:title="SETTINGS"
+                android:id="@+id/us"
+                android:title="US News"
                 app:showAsAction="never" />
+
+            <item
+                android:id="@+id/gb"
+                android:title="GB News"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/lt"
+                android:title="LT News"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/ua"
+                android:title="UA News"
+                app:showAsAction="never" />
+
             <item
                 android:id="@+id/favourite"
                 android:title="FAVOURITE"
